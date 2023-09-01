@@ -1,5 +1,6 @@
-﻿  Generating code
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+﻿  main.cpp
+  Trwa generowanie kodu
   All 27 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  Memoxide.vcxproj -> C:\Users\CyKnowXLPro2008\source\repos\Memoxide\Release\Memoxide.exe
+  Zakończono generowanie kodu
+  Memoxide.vcxproj -> C:\Users\ACER\source\repos\Memoxide-by-WilliamPatch692-and-TBSVEHD584-main\Release\Memoxide.exe
+  Memoxide.vcxproj -> C:\Users\ACER\source\repos\Memoxide-by-WilliamPatch692-and-TBSVEHD584-main\Release\Memoxide.pdb (Full PDB)

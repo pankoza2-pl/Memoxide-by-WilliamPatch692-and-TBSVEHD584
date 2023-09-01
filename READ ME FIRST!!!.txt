@@ -1,0 +1,24 @@
+███╗░░░███╗███████╗███╗░░░███╗░█████╗░██╗░░██╗██╗██████╗░███████╗░░░███████╗██╗░░██╗███████╗
+████╗░████║██╔════╝████╗░████║██╔══██╗╚██╗██╔╝██║██╔══██╗██╔════╝░░░██╔════╝╚██╗██╔╝██╔════╝
+██╔████╔██║█████╗░░██╔████╔██║██║░░██║░╚███╔╝░██║██║░░██║█████╗░░░░░█████╗░░░╚███╔╝░█████╗░░
+██║╚██╔╝██║██╔══╝░░██║╚██╔╝██║██║░░██║░██╔██╗░██║██║░░██║██╔══╝░░░░░██╔══╝░░░██╔██╗░██╔══╝░░
+██║░╚═╝░██║███████╗██║░╚═╝░██║╚█████╔╝██╔╝╚██╗██║██████╔╝███████╗██╗███████╗██╔╝╚██╗███████╗
+╚═╝░░░░░╚═╝╚══════╝╚═╝░░░░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝╚═════╝░╚══════╝╚═╝╚══════╝╚═╝░░╚═╝╚══════╝
+Malware Name: Memoxide
+Type: GDI.Trojan.Win32
+Destruction Rate: Very Destructive!
+Malware Made Using: C++
+Creation Date: 4/2/23
+Creator: TheBlackSquareVideoEffectsHD584 And WilliamP692, bugs fixed by pankoza
+
+Warning! This software is made for educational purposes only, We are not responsible for any damages
+made using this software!
+It will overwrite the MasterBootRecord and disable task manager and regedit.
+
+Also make sure you have the 2 wav files from the rar file and do not delete them because some sounds
+did not work for some reason. :/
+If wav files are deleted, then some sounds won't play the audio.
+
+Safety version is created by pankoza...
+
+Credits to Nywal for sinewaves code

